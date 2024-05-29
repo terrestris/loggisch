@@ -81,6 +81,7 @@ export const log = (level: LogLevel, message: string) => {
 
 /**
  * Logs a severe message.
+ *
  * @param message - The message to log.
  */
 export const severe = (message: string) => log('severe', message);

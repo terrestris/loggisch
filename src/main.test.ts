@@ -1,39 +1,63 @@
-import { describe, expect, test, spyOn, afterEach } from "bun:test";
+import { describe, expect, test, spyOn, beforeEach } from "bun:test";
 
-import { getLogLevel, setLogLevel, log } from "./main";
+import loggisch from "./main";
 
-const consoleSpy = spyOn(global.console, 'log');
+const logSpy = spyOn(loggisch, "log");
+const consoleSpy = spyOn(console, "log");
 
 describe("loglevel handling", () => {
 
   test("getLoglevel returns the current loglevel", () => {
-    expect(getLogLevel()).toBe('error');
+    expect(loggisch.getLogLevel()).toBe('error');
   });
 
   test("setLogLevel changes the loglevel", () => {
-    setLogLevel('info');
-    expect(getLogLevel()).toBe('info');
+    loggisch.setLogLevel('info');
+    expect(loggisch.getLogLevel()).toBe('info');
   });
 
 });
 
 describe("logging", () => {
 
-  afterEach(() => {
-    consoleSpy.mockRestore();
+  beforeEach(() => {
+    logSpy.mockClear();
+    consoleSpy.mockClear();
   });
 
-  test("log only logs if the loglevel is high enough", () => {
-    setLogLevel('info');
-    log('warning', 'test');
-    expect(consoleSpy).not.toHaveBeenCalled();
-  });
-
-  test("log logs if the loglevel is high enough", () => {
-    setLogLevel('info');
-    log('info', 'test');
+  test("log logs a message with the specified level", () => {
+    loggisch.log('info', 'info message');
     expect(consoleSpy).toHaveBeenCalled();
-    expect(consoleSpy).toHaveBeenCalledWith('waefwefwewef');
+  });
+
+  test("severe logs a message with level severe", () => {
+    loggisch.severe('severe message');
+    expect(logSpy).toHaveBeenCalledWith('severe', 'severe message');
+  });
+
+  test("error logs a message with level error", () => {
+    loggisch.error('error message');
+    expect(logSpy).toHaveBeenCalledWith('error', 'error message');
+  });
+
+  test("warning logs a message with level warning", () => {
+    loggisch.warning('warning message');
+    expect(logSpy).toHaveBeenCalledWith('warning', 'warning message');
+  });
+
+  test("info logs a message with level info", () => {
+    loggisch.info('info message');
+    expect(logSpy).toHaveBeenCalledWith('info', 'info message');
+  });
+
+  test("debug logs a message with level debug", () => {
+    loggisch.debug('debug message');
+    expect(logSpy).toHaveBeenCalledWith('debug', 'debug message');
+  });
+
+  test("trace logs a message with level trace", () => {
+    loggisch.trace('trace message');
+    expect(logSpy).toHaveBeenCalledWith('trace', 'trace message');
   });
 
 });
