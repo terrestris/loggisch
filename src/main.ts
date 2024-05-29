@@ -41,6 +41,7 @@ let format: LogLevelStyles = {
 
 /**
  * Sets the style format for a specific log level.
+ *
  * @param level - The log level to set the style format for.
  * @param newFormat - The new style format to apply.
  */
@@ -50,6 +51,7 @@ export const setStyle = (level: LogLevel, newFormat: string) => {
 
 /**
  * Retrieves the current log level.
+ *
  * @returns The current log level.
  */
 export const getLogLevel = () => {
@@ -58,6 +60,7 @@ export const getLogLevel = () => {
 
 /**
  * Sets the log level.
+ *
  * @param level - The log level to set.
  */
 export const setLogLevel = (level: LogLevel) => {
@@ -78,6 +81,7 @@ export const log = (level: LogLevel, message: string) => {
 
 /**
  * Logs a severe message.
+ *
  * @param message - The message to log.
  */
 export const severe = (message: string) => log('severe', message);
@@ -119,6 +123,7 @@ export const trace = (message: string) => log('trace', message);
 
 /**
  * Determines whether a log message with the given level should be logged.
+ *
  * @param level - The log level to check.
  * @returns A boolean indicating whether the log message should be logged.
  */
