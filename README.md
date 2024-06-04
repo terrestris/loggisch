@@ -1,6 +1,6 @@
 ## loggisch
 
-Tiny JS logging library for NodeJS and the browser (ES6/UMD).
+Tiny JS logging library for backend (NodeJS, bun) and frontend (ES6/UMD).
 
 ## Installation & usage
 
@@ -16,6 +16,12 @@ npm i loggisch
 In your code:
 ```ts
 import log from 'loggisch';
+
+log.setLogLevel('error');
+
+log.error('Will be logged');
+
+log.warn('Will not be logged');
 ```
 
 ## API
