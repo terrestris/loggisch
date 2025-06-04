@@ -110,14 +110,14 @@ export const setLogLevel = (level: LogLevel) => {
  * Logs a message with the specified log level.
  *
  * @param level - The log level.
- * @param message - The message to be logged.
+ * @param messages - The messages to be logged.
  */
-export const log = (level: LogLevel, message: string) => {
+export const log = (level: LogLevel, ...messages: any) => {
   if (shouldLog(level)) {
     if (isNode) {
-      console.log(terminalStyle[level], `[${level.toUpperCase()}]`, '\x1b[0m', message);
+      console.log(terminalStyle[level], `[${level.toUpperCase()}]`, '\x1b[0m', ...messages);
     } else {
-      console.log(`%c[${level}]`, browserStyle[level], message)
+      console.log(`%c[${level}]`, browserStyle[level], ...messages)
     }
   }
 };
@@ -125,44 +125,44 @@ export const log = (level: LogLevel, message: string) => {
 /**
  * Logs a severe message.
  *
- * @param message - The message to log.
+ * @param messages - The messages to be logged.
  */
-export const severe = (message: string) => log('severe', message);
+export const severe = (...messages: any) => log('severe', ...messages);
 
 /**
  * Logs an error message.
  *
- * @param message - The error message to log.
+ * @param messages - The messages to be logged.
  */
-export const error = (message: string) => log('error', message);
+export const error = (...messages: any) => log('error', ...messages);
 
 /**
  * Logs an informational message.
  *
- * @param message - The message to log.
+ * @param messages - The messages to be logged.
  */
-export const info = (message: string) => log('info', message);
+export const info = (...messages: any) => log('info', ...messages);
 
 /**
  * Logs a warning message.
  *
- * @param message - The warning message to log.
+ * @param messages - The messages to be logged.
  */
-export const warning = (message: string) => log('warning', message);
+export const warning = (...messages: any) => log('warning', ...messages);
 
 /**
  * Logs a debug message.
  *
- * @param message - The message to be logged.
+ * @param messages - The messages to be logged.
  */
-export const debug = (message: string) => log('debug', message);
+export const debug = (...messages: any) => log('debug', ...messages);
 
 /**
  * Logs a trace message.
  *
- * @param message - The message to be logged.
+ * @param messages - The messages to be logged.
  */
-export const trace = (message: string) => log('trace', message);
+export const trace = (...messages: any) => log('trace', ...messages);
 
 /**
  * Determines whether a log message with the given level should be logged.
