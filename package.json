@@ -9,9 +9,9 @@
     "prepublishOnly": "bun run build"
   },
   "devDependencies": {
-    "@types/bun": "^1.2.15",
+    "@types/bun": "^1.2.18",
     "typescript": "^5.8.3",
-    "vite": "^6.3.5",
+    "vite": "^7.0.5",
     "vite-plugin-dts": "^4.5.4"
   },
   "files": [
