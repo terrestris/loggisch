@@ -15,9 +15,9 @@ npm i loggisch
 
 In your code:
 ```ts
-import { logger } from 'loggisch';
+import { logger, setLogLevel } from 'loggisch';
 
-logger.setLogLevel('error');
+setLogLevel('error');
 
 logger.error('Will be logged');
 
