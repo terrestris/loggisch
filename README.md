@@ -15,13 +15,13 @@ npm i loggisch
 
 In your code:
 ```ts
-import log from 'loggisch';
+import { logger } from 'loggisch';
 
-log.setLogLevel('error');
+logger.setLogLevel('error');
 
-log.error('Will be logged');
+logger.error('Will be logged');
 
-log.warn('Will not be logged');
+logger.warn('Will not be logged');
 ```
 
 ## API
