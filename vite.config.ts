@@ -14,6 +14,7 @@ export default defineConfig({
       fileName: 'main',
       entry: resolve(__dirname, 'src/main.ts'),
       formats: ['es', 'umd'],
-    }
+    },
+    sourcemap: true,
   }
 });
