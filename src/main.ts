@@ -2,7 +2,7 @@
  * Determines whether the current environment is Node.js.
  * @private
  */
-const _isNode = typeof process !== 'undefined' && !!process.versions && !!process.versions.node;
+const _isNode = () => typeof process !== 'undefined' && !!process.versions && !!process.versions.node;
 
 /**
  * Represents the log level type.
@@ -197,7 +197,7 @@ const _log = (level: LogLevel, ...messages: any) => {
 
     const formattedMessages = messages.map(_formatValue);
 
-    if (_isNode) {
+    if (_isNode()) {
       console.log(
         _getTimeStamp(),
         _terminalStyle[level],
@@ -207,10 +207,9 @@ const _log = (level: LogLevel, ...messages: any) => {
       );
     } else {
       console.log(
-        _getTimeStamp(),
-        `%c[${level}]`,
+        `${_getTimeStamp()} %c[${level}]%c ${formattedMessages.join(' ')}`,
         _browserStyle[level],
-        ...formattedMessages
+        ""
       );
     }
   }
